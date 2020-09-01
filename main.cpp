@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node {
-  int data;
+typedef struct node{
+  char data;
   struct node *leftChild;
   struct node *rightChild;
 }node;
 
-void insert(node *&root,int data){
+node* insert(node *&root,char data){
     node *tempNode = static_cast<node *>(malloc(sizeof(struct node)));
 
     tempNode->data = data;
@@ -25,23 +25,42 @@ void insert(node *&root,int data){
         }
 
     }
+    return tempNode;
 }
 
-void mostrar_arbol(node *root,int count){
+void orden(node *root){
     if(root == nullptr){
-
+        printf(" ");
     }else{
-        mostrar_arbol(root->rightChild,count+1);
-        for (int i=0;i<count;i++){
-            printf(" ");
-        }
-        printf("%d",root->data);
-        mostrar_arbol(root->leftChild,count+1);
+        orden(root->leftChild);
+        printf("%c ",root->data);
+        orden(root->rightChild);
+    }
+}
+
+void preorden(node *root){
+    if(root == nullptr){
+        printf(" ");
+    }else{
+        printf("%c",root->data);
+        preorden(root->leftChild);
+        preorden(root->rightChild);
+    }
+}
+
+void postorden(node *root){
+    if(root == nullptr){
+        printf(" ");
+    }else{
+        postorden(root->leftChild);
+        postorden(root->rightChild);
+        printf("%c",root->data);
     }
 }
 
 void menu(node *root){
-    int dato,opcion,contador = 0;
+    char dato;
+    int opcion;
 
     do{
         printf("\t :MENU: \n");
@@ -52,13 +71,13 @@ void menu(node *root){
         switch (opcion) {
             case 1:
                 printf("Digite el numero\n");
-                scanf("%d",&dato);
+                scanf("%c",&dato);
                 insert(root,dato);
                 printf("\n");
             break;
             case 2:
                 printf("Mostrando el arbol \n");
-                mostrar_arbol(root,contador);
+                orden(root);
                 printf("\n");
             break;
         }
@@ -66,7 +85,24 @@ void menu(node *root){
 
 }
 
-static node *root = nullptr;
+
 int main(){
-    menu(root);
+    static node *root = nullptr;
+    insert(root,'F');
+    node *B = insert(root->leftChild,'B');
+    node *G = insert(root->rightChild,'G');
+    node *D = insert(B->rightChild,'D');
+    insert(B->leftChild,'A');
+    insert(D->rightChild,'E');
+    insert(D->leftChild,'C');
+    node *I = insert(G->rightChild,'I');
+    insert(I->leftChild,'H');
+
+    preorden(root);
+    printf("\n");
+    orden(root);
+    printf("\n");
+    postorden(root);
+    printf("\n");
+
 }
