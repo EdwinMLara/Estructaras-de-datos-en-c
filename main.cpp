@@ -2,18 +2,19 @@
 #include <stdlib.h>
 #include "arbol.cpp"
 #include "lista.cpp"
+#include "pila.cpp"
 
 void testTree(){
     static node *root = nullptr;
-    insert(root,'F');
-    node *B = insert(root->leftChild,'B');
-    node *G = insert(root->rightChild,'G');
-    node *D = insert(B->rightChild,'D');
-    insert(B->leftChild,'A');
-    insert(D->rightChild,'E');
-    insert(D->leftChild,'C');
-    node *I = insert(G->rightChild,'I');
-    insert(I->leftChild,'H');
+    insertA(root,'F');
+    node *B = insertA(root->leftChild,'B');
+    node *G = insertA(root->rightChild,'G');
+    node *D = insertA(B->rightChild,'D');
+    insertA(B->leftChild,'A');
+    insertA(D->rightChild,'E');
+    insertA(D->leftChild,'C');
+    node *I = insertA(G->rightChild,'I');
+    insertA(I->leftChild,'H');
 
     preorden(root);
     printf("\n");
@@ -26,16 +27,31 @@ void testTree(){
 
 void testList(){
     static nodeL *root = nullptr;
-    insert(root,1);
-    insert(root,2);
-    insert(root,3);
-    insert(root,4);
-    showList(root);
+    insertL(root,1);
+    insertL(root,2);
+    insertL(root,3);
+    insertL(root,4);
+    readL(root);
     printf("\n");
-    remove(root,3);
-    update(root,4,12);
-    showList(root);
+    removeL(root,3);
+    updateL(root,4,12);
+    readL(root);
+}
+
+void testPila(){
+    static nodeP *root = nullptr;
+    insertP(root,2);
+    insertP(root,4);
+    insertP(root,6);
+    insertP(root,8);
+    updateP(root,8,10);
+    readP(root);
+    printf("\n");
+    removeP(root,6);
+    readP(root);
+    printf("\n");
+
 }
 int main(){
-    testList();
+    testPila();
 }

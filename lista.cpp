@@ -1,6 +1,6 @@
 #include "lista.h"
 
-nodeL* insert(nodeL*& node,int dato){
+void insertL(nodeL*& node,int dato){
     nodeL* tem = nullptr;
     if(node == nullptr){
         tem = static_cast<nodeL *>(malloc(sizeof (struct nodeL)));
@@ -8,12 +8,11 @@ nodeL* insert(nodeL*& node,int dato){
         node = tem;
         node->sig = nullptr;
     }else{
-      insert(node->sig,dato);
+      insertL(node->sig,dato);
     }
-    return tem;
 }
 
-bool remove(nodeL *& node,int dato){
+bool removeL(nodeL*& node,int dato){
     nodeL *aux = node;
     nodeL *prev = nullptr;
     while(aux->dato != dato){
@@ -27,7 +26,7 @@ bool remove(nodeL *& node,int dato){
     return true;
 }
 
-bool update(nodeL*& node,int dato, int updateDato){
+bool updateL(nodeL*& node,int dato, int updateDato){
     nodeL *aux = node;
     while(aux->dato != dato){
         aux = aux->sig;
@@ -38,10 +37,10 @@ bool update(nodeL*& node,int dato, int updateDato){
     return true;
 }
 
-void showList(nodeL*& node){
+void readL(nodeL*& node){
     if(node != nullptr){
         printf("%d --",node->dato);
-        showList(node->sig);
+        readL(node->sig);
     }
 }
 

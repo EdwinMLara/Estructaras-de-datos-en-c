@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "arbol.h"
 
-node* insert(node *&root,char data){
+node* insertA(node *&root,char data){
     node *tempNode = static_cast<node *>(malloc(sizeof(struct node)));
 
     tempNode->data = data;
@@ -14,9 +14,9 @@ node* insert(node *&root,char data){
     }else{
         int valor_raiz = root->data;
         if(data<=valor_raiz){
-            insert(root->leftChild,data);
+            insertA(root->leftChild,data);
         }else{
-            insert(root->rightChild,data);
+            insertA(root->rightChild,data);
         }
 
     }
@@ -67,7 +67,7 @@ void menu(node *root){
             case 1:
                 printf("Digite el numero\n");
                 scanf("%c",&dato);
-                insert(root,dato);
+                insertA(root,dato);
                 printf("\n");
             break;
             case 2:

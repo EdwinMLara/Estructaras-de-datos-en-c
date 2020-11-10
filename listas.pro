@@ -17,7 +17,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         arbol.cpp \
         lista.cpp \
-        main.cpp
+        main.cpp \
+        pila.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -26,4 +27,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     arbol.h \
-    lista.h
+    cola.h \
+    lista.h \
+    pila.h

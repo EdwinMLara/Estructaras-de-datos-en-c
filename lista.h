@@ -9,10 +9,12 @@ typedef struct nodeL {
     struct nodeL *sig;
 }nodeL;
 
-nodeL* insert(nodeL*& node, int dato);
+void insert(nodeL*& node, int dato);
 bool remove(nodeL*& node,int dato);
 bool update(nodeL*& node,int dato, int updateDato);
 void showList(nodeL*& node);
+
+void goodTasted(nodeL*& node,int dato);
 
 
 #endif // LISTA_H

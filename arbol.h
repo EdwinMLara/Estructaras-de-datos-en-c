@@ -6,7 +6,7 @@ typedef struct node{
   struct node *rightChild;
 }node;
 
-node* insert(node *&root,char data);
+node* insertA(node *&root,char data);
 void orden(node *root);
 void preorden(node *root);
 void postorden(node *root);
