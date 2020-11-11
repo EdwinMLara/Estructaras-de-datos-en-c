@@ -3,6 +3,7 @@
 #include "arbol.cpp"
 #include "lista.cpp"
 #include "pila.cpp"
+#include "cola.h"
 
 void testTree(){
     static node *root = nullptr;
@@ -52,6 +53,12 @@ void testPila(){
     printf("\n");
 
 }
+
+void testCola(){
+    static nodeC *root = nullptr;
+    insertC(root,3);
+    insertC(root,6);
+}
 int main(){
-    testPila();
+    testCola();
 }

@@ -1,5 +1,8 @@
 #ifndef COLA_H
 #define COLA_H
+#include <stdio.h>
+#include <stdlib.h>
+
 typedef struct nodeC{
     int data;
     nodeC *sig;

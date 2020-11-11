@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         arbol.cpp \
+        cola.cpp \
         lista.cpp \
         main.cpp \
         pila.cpp
